@@ -1,0 +1,2 @@
+alias hs='history | grep'
+
