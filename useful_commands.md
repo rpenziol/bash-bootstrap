@@ -61,12 +61,30 @@ pip3 install git-filter-repo
 
 ```bash
 # Rewrite author history - https://git-scm.com/docs/gitmailmap#_examples
-printf 'Robbie Penziol <rpenziol@users.noreply.github.com> <test@test.com>\nRobbie Penziol <rpenziol@users.noreply.github.com> <(none)>\n' > ~/.mailmap
+origin=$(git remote get-url origin)
+
+printf 'Robbie Penziol <rpenziol@users.noreply.github.com> <test@test.com>\nRobbie Penziol <rpenziol@users.noreply.github.com> <(none)>\nRobbie Penziol <rpenziol@users.noreply.github.com> <rpenziol@pdx.edu>\n' > ~/.mailmap
 git filter-repo --mailmap ~/.mailmap --force
+
+git remote add origin ${origin}
+git push --set-upstream origin main --force
 ```
 
 ```bash
 # Remove file/directory from history
+origin=$(git remote get-url origin)
+
 git filter-repo --path test/path --invert-paths --force
 git filter-repo --path test_file.txt --invert-paths --force
+
+git remote add origin ${origin}
+git push --set-upstream origin main --force
+```
+
+```bash
+# Rename branch from master -> main
+git branch -m master main
+git push -u origin main
+# Manual step: swap default branch on Github from master to main
+git push origin --delete master
 ```
