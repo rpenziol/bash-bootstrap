@@ -52,6 +52,17 @@ zfs list
 zfs list -H -o name -t snapshot | xargs -n1 sudo zfs destroy
 ```
 
+```bash
+# Restore from saved snapshot
+# Note: the dataset "restore" doesn't have to exist before running this command
+sudo zfs receive tank/restore < /backups/data.zfs
+```
+
+```bash
+# Delete dataset and all its snapshots
+sudo zfs destroy -r tank/test
+```
+
 ## Git Rewrite History
 
 ```bash
