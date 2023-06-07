@@ -3,7 +3,7 @@
 ## Setup 1-liner
 
 ```bash
-dst="/tmp/dotfiles" ; mkdir -p ${dst} ; git clone git@github.com:rpenziol/bash-bootstrap.git ${dst} ; cp -rT ${dst} ~/ --backup=numbered ; rm -rf ${dst}
+dst="/tmp/dotfiles" ; mkdir -p ${dst} ; git clone https://github.com/rpenziol/bash-bootstrap.git ${dst} ; cp -rT ${dst} ~/ --backup=numbered ; rm -rf ${dst}
 ```
 
 ## Purge all old versions of files
